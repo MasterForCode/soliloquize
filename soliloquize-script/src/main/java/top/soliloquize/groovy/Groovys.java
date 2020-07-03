@@ -205,4 +205,24 @@ public class Groovys {
         Script script = gse.createScript(fileName, binding(map));
         return script.invokeMethod(funName, oval);
     }
+
+    /**
+     * 包装脚本,获得错误发生行,可更改以满足日志需求
+     *
+     * @param script 脚本
+     * @return 脚本
+     */
+    public static String wrapperScript2GetErrorLine(String script) {
+
+        return "try {\n" +
+                script +
+                "} catch (Exception e) {\n" +
+                "    String str = e.getStackTrace().toString()\n" +
+                "    def pattern = (str =~ /groovy.(\\d+)./)\n" +
+                "    println('The error occurred on line ' + pattern[0][1])\n" +
+                "    throw new RuntimeException(e)\n" +
+                "}\n" +
+                "\n";
+    }
+
 }

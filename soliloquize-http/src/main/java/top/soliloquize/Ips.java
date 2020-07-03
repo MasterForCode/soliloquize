@@ -25,7 +25,7 @@ public class Ips {
     /**
      * 获取真实IP
      *
-     * @param request HttpServerRequest
+     * @param request HttpServletRequest
      * @return IP
      */
     public static String getIpAddress(HttpServletRequest request) {
