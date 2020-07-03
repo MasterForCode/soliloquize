@@ -1,0 +1,5 @@
+rootProject.name = 'soliloquize'
+include 'soliloquize-core'
+include 'soliloquize-http'
+include 'soliloquize-script'
+

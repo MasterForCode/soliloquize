@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/soliloquize-core/build/
+/soliloquize-core/out/
+/soliloquize-core/out/production/classes/

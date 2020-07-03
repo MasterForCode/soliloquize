@@ -1,0 +1,26 @@
+
+allprojects {
+    apply plugin: 'java'
+    group 'soliloquize'
+    version = '1.0-SNAPSHOT'
+    sourceCompatibility = 1.8
+}
+
+subprojects {
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+    // 配置所有子模块的依赖仓库地址
+    repositories {
+        // 本地maven仓库
+        mavenLocal()
+        maven { url = 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        //和maven中央仓库一样的另一个依赖管理仓库,主要是java
+        jcenter()
+    }
+    //所有子模块共有依赖
+    dependencies{
+        compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
+    }
+}
+
+
