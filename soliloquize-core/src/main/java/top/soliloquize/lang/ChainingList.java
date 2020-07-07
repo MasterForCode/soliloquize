@@ -1,6 +1,7 @@
 package top.soliloquize.lang;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -50,5 +51,9 @@ public class ChainingList<E> {
         for (int i = 0; i < this.list.size(); i++) {
             indexConsumer.accept(i, this.get(i));
         }
+    }
+
+    public Iterator<E> iterator() {
+        return this.list.iterator();
     }
 }

@@ -3,4 +3,5 @@ include 'soliloquize-core'
 include 'soliloquize-http'
 include 'soliloquize-script'
 include 'soliloquize-job'
+include 'soliloquize-data'
 
