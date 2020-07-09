@@ -3,3 +3,6 @@
 /soliloquize-core/build/
 /soliloquize-core/out/
 /soliloquize-core/out/production/classes/
+/soliloquize-data/out
+/soliloquize-http/out
+/soliloquize-job/out
