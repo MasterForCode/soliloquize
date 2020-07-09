@@ -1,5 +1,7 @@
 package top.soliloquize.lang;
 
+import top.soliloquize.collection.Collections;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.function.BiConsumer;
@@ -48,12 +50,15 @@ public class ChainingList<E> {
     }
 
     public void forEach(BiConsumer<Integer, E> indexConsumer) {
-        for (int i = 0; i < this.list.size(); i++) {
-            indexConsumer.accept(i, this.get(i));
-        }
+        Collections.loop(this.list, indexConsumer);
     }
 
     public Iterator<E> iterator() {
         return this.list.iterator();
+    }
+
+    public static void main(String[] args) {
+        ChainingList<Integer> data = new ChainingList<Integer>().add(1).add(2);
+        data.forEach((i,e) -> System.out.println("i:" + i + ",e:" + e));
     }
 }

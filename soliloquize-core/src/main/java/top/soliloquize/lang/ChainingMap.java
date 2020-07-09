@@ -1,5 +1,8 @@
 package top.soliloquize.lang;
 
+import top.soliloquize.map.LoopWithIndex;
+import top.soliloquize.map.Maps;
+
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 
@@ -41,4 +44,9 @@ public class ChainingMap<K, V> {
     public void forEach(BiConsumer<K, V> consumer) {
         this.map.forEach(consumer);
     }
+
+    public void loop(LoopWithIndex action) {
+        Maps.loopWithIndex(this.map, action);
+    }
+
 }
