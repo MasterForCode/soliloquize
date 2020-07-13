@@ -1,9 +1,6 @@
 package top.soliloquize.date;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -36,6 +33,19 @@ public class Dates {
             return null;
         }
         return date.toInstant().atZone(Dates.DEFAULT_ZONE_ID).toLocalDate();
+    }
+
+    /**
+     * date转localDateTime
+     *
+     * @param date 被转化时间
+     * @return 转化后时间
+     */
+    public static LocalDateTime date2LocalDateTime(Date date) {
+        if (null == date) {
+            return null;
+        }
+        return date.toInstant().atZone(Dates.DEFAULT_ZONE_ID).toLocalDateTime();
     }
 
     /**

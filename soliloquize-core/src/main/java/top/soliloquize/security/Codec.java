@@ -21,9 +21,12 @@ public class Codec {
     private static final String GBK = "GBK";
     private static final String UTF16LE = "UTF-16LE";
     private static final String UNICODE = "Unicode";
+    private static final String HEX_PATTERN = "[0-9a-fA-F]+";
+    private static final String BASE64_PATTERN = "[0-9a-zA-Z]+";
     private static Logger logger = LoggerFactory.getLogger(Codec.class);
 
-    private Codec() {}
+    private Codec() {
+    }
 
     /**
      * Base64编码
@@ -207,6 +210,28 @@ public class Codec {
             e.printStackTrace();
         }
         return "";
+    }
+
+    /**
+     * 不保证完全正确,只能判断是否符合格式
+     * 判断字符是否是hex格式的
+     *
+     * @param content 待验证字符
+     * @return true:hex编码, false: 非hex编码
+     */
+    public static boolean isHexed(String content) {
+        return content.matches(Codec.HEX_PATTERN);
+    }
+
+    /**
+     * 不保证完全正确,只能判断是否符合格式
+     * 判断字符是否是base64格式的
+     *
+     * @param content 待验证字符
+     * @return true:base64编码, false: 非base64编码
+     */
+    public static boolean isBase64(String content) {
+        return content.matches(Codec.BASE64_PATTERN);
     }
 
 }
