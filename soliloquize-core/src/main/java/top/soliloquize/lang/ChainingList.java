@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * @author wb
@@ -55,6 +56,10 @@ public class ChainingList<E> {
 
     public Iterator<E> iterator() {
         return this.list.iterator();
+    }
+
+    public Stream<E> stream() {
+        return this.list.stream();
     }
 
     public static void main(String[] args) {

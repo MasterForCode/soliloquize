@@ -23,7 +23,7 @@ public class Test {
         resource.add(new File("C:\\Users\\wb\\Desktop\\test2.jpg"));
 //            transmitter.send(new ImDefinition().setMsg("纯文本").setSender("3485713420@qq.com").setReceiver("2514275491@qq.com").setPassword("afcmxzdoybanchef").setSubject("测试"));
 //            transmitter.send(new ImDefinition().setMsg("<img src='cid:idea.jpg'/>  富文本！<img src='cid:test1.jpg'/>  富文本！<img src='cid:test2.jpg'/>  富文本！").setSender("3485713420@qq.com").setReceiver("2514275491@qq.com").setPassword("afcmxzdoybanchef").setSubject("测试").setResource(resource));
-        transmitter.send(new ImDefinition().setMsg("纯文 + 附件").setSender("3485713420@qq.com").setReceiver("2514275491@qq.com").setPassword("afcmxzdoybanchef").setSubject("测试").setAnnex(new File("C:\\Users\\wb\\Desktop\\common.log")));
+        transmitter.send(new ImDefinition().setMsg("纯文 + 附件").setSender("*******@qq.com").setReceiver("*******@qq.com").setPassword("afcmxzdoybanchef").setSubject("测试").setAnnex(new File("C:\\Users\\wb\\Desktop\\common.log")));
         transmitter.send(new ImDefinition().setMsg("<img src='cid:idea.jpg'/> <a href=\"https://www.baidu.com\">百度</a> 富文本 + 附件！<img src='cid:test1.jpg'/>  富文本 + 附件！<img src='cid:test2.jpg'/>  富文本 + 附件！").setSender("3485713420@qq.com").setReceiver("2514275491@qq.com").setPassword("afcmxzdoybanchef").setSubject("测试").setAnnex(new File("C:\\Users\\wb\\Desktop\\common.log")).setResource(resource));
 //        }
     }

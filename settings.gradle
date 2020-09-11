@@ -5,4 +5,6 @@ include 'soliloquize-script'
 include 'soliloquize-job'
 include 'soliloquize-data'
 include 'soliloquize-sql'
+include 'soliloquize-poi'
+include 'soliloquize-im'
 
