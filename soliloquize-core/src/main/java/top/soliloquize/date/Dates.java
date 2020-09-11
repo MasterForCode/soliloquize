@@ -2,6 +2,8 @@ package top.soliloquize.date;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -11,6 +13,9 @@ import java.util.Date;
  * @date 2020/7/3
  */
 public class Dates {
+    public static final String DATE = "yyyy-MM-dd";
+    public static final String TIME = "hh:mm:ss";
+    public static final String DATE_TIME = "yyyy-MM-dd hh:mm:ss";
     private static final ZoneId DEFAULT_ZONE_ID = ZoneId.systemDefault();
 
     /**
@@ -120,6 +125,36 @@ public class Dates {
     }
 
     /**
+     * 格式化时间为yyyy-MM-dd格式
+     *
+     * @param date   时间
+     * @return 格式化后的字符串
+     */
+    public static String formatDate2Date(Date date) {
+        return Dates.formatDate(date, Dates.DATE);
+    }
+
+    /**
+     * 格式化时间为hh:mm:ss格式
+     *
+     * @param date   时间
+     * @return 格式化后的字符串
+     */
+    public static String formatDate2Time(Date date) {
+        return Dates.formatDate(date, Dates.TIME);
+    }
+
+    /**
+     * 格式化时间为yyyy-MM-dd hh:mm:ss格式
+     *
+     * @param date   时间
+     * @return 格式化后的字符串
+     */
+    public static String formatDate2DateTime(Date date) {
+        return Dates.formatDate(date, Dates.DATE_TIME);
+    }
+
+    /**
      * 格式化localDate
      *
      * @param localDate localDate
@@ -130,4 +165,72 @@ public class Dates {
         return localDate.format(DateTimeFormatter.ofPattern(format));
     }
 
+    /**
+     * 格式化localDate为yyyy-MM-dd
+     *
+     * @param localDate localDate
+     * @return 格式化后的字符串
+     */
+    public static String formatLocalDate2Date(LocalDate localDate) {
+        return Dates.formatLocalDate(localDate, Dates.DATE);
+    }
+
+    /**
+     * 格式化localDate为hh:mm:ss
+     *
+     * @param localDate localDate
+     * @return 格式化后的字符串
+     */
+    public static String formatLocalDate2Time(LocalDate localDate) {
+        return Dates.formatLocalDate(localDate, Dates.TIME);
+    }
+
+    /**
+     * 格式化localDate为yyyy-MM-dd hh:mm:ss
+     *
+     * @param localDate localDate
+     * @return 格式化后的字符串
+     */
+    public static String formatLocalDate2DateTime(LocalDate localDate) {
+        return Dates.formatLocalDate(localDate, Dates.DATE_TIME);
+    }
+
+    /**
+     * date字符串添加天数
+     * @param dateStr 日期字符串
+     * @param format 日期格式
+     * @param days 添加的天数
+     * @return 日期
+     */
+    public static Date plusDays(String dateStr, String format, int days) {
+        Date date = Dates.str2Date(dateStr, format);
+        return Dates.dateAddDays(date, days);
+    }
+
+    /**
+     * date字符串添加天数
+     * @param dateStr 日期字符串
+     * @param format 日期格式
+     * @param days 添加的天数
+     * @return 日期字符串
+     */
+    public static String plusDays1(String dateStr, String format, int days) {
+        return Dates.formatDate(Dates.plusDays(dateStr, format, days), format);
+    }
+
+    /**
+     * 判断时间段是否有交集, 不限制时间段的顺序,2020-01-01~2020-02-02或2020-02-02~2020-01-01
+     * @param period1First 时间段1的时间
+     * @param period1Second 时间段1的时间
+     * @param period2First 时间段2的时间
+     * @param period2Second 时间段2的时间
+     * @return true有交集,false没交集
+     */
+    public static boolean dateCrossPredicate(Date period1First, Date period1Second, Date period2First, Date period2Second) {
+        Date period1End = Collections.max(Arrays.asList(period1First, period1Second));
+        Date period1Start = Collections.min(Arrays.asList(period1First, period1Second));
+        Date period2End = Collections.max(Arrays.asList(period2First, period2Second));
+        Date period2Start = Collections.min(Arrays.asList(period2First, period2Second));
+        return period1End.getTime() >= period2Start.getTime() && period2End.getTime() >= period1Start.getTime();
+    }
 }
